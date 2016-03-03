@@ -1,0 +1,39 @@
+import time
+import re
+import requests
+from slackclient import SlackClient
+
+token = "xoxb-23720755937-LgCwr99gnZV2s7NO2GeiCUP1"
+sc = SlackClient(token)
+
+def msgToSlack(channel,message):
+    sc.api_call("chat.postMessage", as_user="true",channel=channel, text=message)
+
+def help(channel):
+    channel = channel
+    helpHelp = "To show help: '@smackbot help'"
+    helpInfo = "To show info: '@smackbot info'"
+    message = helpHelp + "\n" + helpInfo
+    msgToSlack(channel,message)
+
+    if sc.rtm_connect():
+    while True:
+        read = sc.rtm_read()
+        print(read)
+        try:
+            if read[0]['type']=='message':
+                channel = read[0]['channel']
+                read = read[0]['text']
+                if '@U0PGE76ER' in read:
+                    msgToSmack = read
+                    if 'help' in msgToSmack:
+                        helpHelp(channel)
+                    elif 'info' in msgToSmack:
+                        helpInfo(channel,msgToSmack)
+                    else:
+                        pass
+        except(KeyError,IndexError):
+            pass
+        time.sleep(1)
+else:
+    print("Connection Failed, broken token?")
