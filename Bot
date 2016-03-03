@@ -27,9 +27,9 @@ if sc.rtm_connect():
                 if '@U0PGE76ER' in read:
                     msgToSmack = read
                     if 'help' in msgToSmack:
-                        helpHelp(channel)
+                        Help(channel)
                     elif 'info' in msgToSmack:
-                        helpInfo(channel,msgToSmack)
+                        Info(channel,msgToSmack)
                     else:
                         pass
         except(KeyError,IndexError):
