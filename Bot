@@ -24,7 +24,7 @@ if sc.rtm_connect():
             if read[0]['type']=='message':
                 channel = read[0]['channel']
                 read = read[0]['text']
-                if '@U0PGE76ER' in read:
+                if '@U0PM6N7TK' in read:
                     msgToSmack = read
                     if 'help' in msgToSmack:
                         Help(channel)
